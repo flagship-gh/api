@@ -1,4 +1,4 @@
-const {  gql, ApolloServer } = require("apollo-server-express");
+const { gql, ApolloServer } = require("apollo-server-express");
 const { SetContext, FormatError } = require("../../middlewares/graphQl");
 
 const rootTypeDef = gql`
@@ -32,8 +32,15 @@ function GraphQlServer() {
   return new ApolloServer({
     context: SetContext,
     subscriptions: false,
-    typeDefs: [rootTypeDef, require("./shops/typeDefs")],
-    resolvers: [require("./shops/resolvers")],
+    typeDefs: [
+      rootTypeDef,
+      require("./adminGroups/typeDefs"),
+      require("./shops/typeDefs"),
+    ],
+    resolvers: [
+      require("./adminGroups/resolvers"),
+      require("./shops/resolvers"),
+    ],
     formatError: FormatError,
     introspection: true,
     playground: true,
