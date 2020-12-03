@@ -35,10 +35,12 @@ function GraphQlServer() {
     typeDefs: [
       rootTypeDef,
       require("./adminGroups/typeDefs"),
+      require("./admins/typeDefs"),
       require("./shops/typeDefs"),
     ],
     resolvers: [
       require("./adminGroups/resolvers"),
+      require("./admins/resolvers"),
       require("./shops/resolvers"),
     ],
     formatError: FormatError,

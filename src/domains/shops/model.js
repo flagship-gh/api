@@ -47,16 +47,16 @@ const ShopSchema = new mongoose.Schema(
     location: LocationSchema,
     timeOpen: {
       type: String,
-      required: true,
+      required: false,
     },
     timeClose: {
       type: String,
-      required: true,
+      required: false,
     },
     status: {
       type: String,
       enum: ["Registered", "Unregistered"],
-      required: true,
+      required: false,
     },
   },
   {

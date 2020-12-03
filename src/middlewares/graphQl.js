@@ -12,11 +12,11 @@ async function SetContext({ req }) {
     if (!__authorization) throw new AuthenticationError("InvalidToken");
     switch (__authorization.type) {
       case "User":
-        __context.user = _authorization.id;
+        __context.user = __authorization.id;
         break;
 
       case "Admin":
-        __context.admin = _authorization.id;
+        __context.admin = __authorization.id;
         break;
     }
   }
