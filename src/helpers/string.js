@@ -11,54 +11,37 @@ function SetDescription(description) {
     .value();
 }
 
-function SetName(name){
+function SetName(name) {
+  return lodash.chain(name).toLower().startCase().value();
+}
+
+function SetMail(email) {
+  return lodash.chain(email).toLower().value();
+}
+
+function SetPermission(permission) {
+  return lodash.chain(permission).snakeCase().toUpper().value();
+}
+
+function SetPhone(phone) {
+  return lodash.chain(phone).slice(-9).join("").padStart(12, "233").value();
+}
+
+function GenerateCode(length = 6) {
   return lodash
-    .chain(name)
-    .toLower()
-    .startCase()
-    .value()
-}
-
-function SetMail(email){
-  return lodash
-    .chain(email)
-    .lowerCase()
-    .startCase()
-    .value()
-}
-
-function SetPermission(permission){
-  return lodash
-    .chain(permission)
-    .lowerCase()
-    .startCase()
-    .value()
-}
-
-function SetPhone(phone){
-   return lodash
-     .chain(phone)
-     .slice(-9)
-     .join("")
-     .padStart(12,"233")
-     .value()
-}
-
-function GenerateCode(length = 6){
-   return lodash
-     .chain("9")
-     .repeat(length)
-     .parseInt()
-     .random()
-     .padStart(length,"0")
-     .value()
+    .chain("9")
+    .repeat(length)
+    .parseInt()
+    .random()
+    .padStart(length, "0")
+    .value();
 }
 
 module.exports = {
-    SetDescription,
-    SetPhone,
-    SetMail,
-    SetName,
-    GenerateCode,
-    SetPermission
-}
+  SetDescription,
+  SetPhone,
+  SetMail,
+  SetName,
+  GenerateCode,
+  SetPermission,
+};
