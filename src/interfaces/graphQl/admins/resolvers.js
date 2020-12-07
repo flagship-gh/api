@@ -29,14 +29,14 @@ module.exports = {
     }),
   },
   Mutation: {
-    createAdmin: Authenticate(async function (_, args, context, info) {
+    createAdmin: async function (_, args, context, info) {
       try {
         const result = await Admins.CreateAdmin(args, context);
         return result;
       } catch (err) {
         return err;
       }
-    }),
+    },
     updateAdmin: Authenticate(async function (_, args, context, info) {
       try {
         const result = await Admins.UpdateAdmin(args, context);
