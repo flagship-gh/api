@@ -22,13 +22,13 @@ module.exports = {
   },
 
   Mutation: {
-    createShop: async function (_, args, context, info) {
+    createShop: Authenticate(async function (_, args, context, info) {
       try {
         const result = await Shops.CreateShop(args, context);
         return result;
       } catch (err) {
         return err;
       }
-    },
+    }),
   },
 };
